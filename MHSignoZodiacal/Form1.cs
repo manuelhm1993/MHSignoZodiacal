@@ -15,6 +15,9 @@ namespace MHSignoZodiacal
         public Form1()
         {
             InitializeComponent();
+
+            this.comboMes.SelectedIndex = 0;
+            this.comboDia.SelectedIndex = 0;
         }
     }
 }
