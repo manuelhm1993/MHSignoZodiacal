@@ -102,51 +102,51 @@ namespace MHSignoZodiacal
 
             if ((mes.Equals("Diciembre") && (dia >= 22 && dia <= 31)) || (mes.Equals("Enero") && (dia >= 1 && dia <= 19)))
             {
-                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
+                response += $"Capricornio ♑: {MapZodiacSigns["Capricornio"]}";
             }
             else if ((mes.Equals("Enero") && (dia >= 20 && dia <= 31)) || (mes.Equals("Febrero") && (dia >= 1 && dia <= 18)))
             {
-                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
+                response += $"Acuario ♒: {MapZodiacSigns["Acuario"]}";
             }
             else if ((mes.Equals("Febrero") && (dia >= 19 && dia <= 29)) || (mes.Equals("Marzo") && (dia >= 1 && dia <= 20)))
             {
-                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
+                response += $"Piscis ♓: {MapZodiacSigns["Piscis"]}";
             }
             else if ((mes.Equals("Marzo") && (dia >= 21 && dia <= 31)) || (mes.Equals("Abril") && (dia >= 1 && dia <= 19)))
             {
-                response += $"Aries: {MapZodiacSigns["Aries"]}";
+                response += $"Aries ♈: {MapZodiacSigns["Aries"]}";
             }
             else if ((mes.Equals("Abril") && (dia >= 20 && dia <= 30)) || (mes.Equals("Mayo") && (dia >= 1 && dia <= 20)))
             {
-                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
+                response += $"Tauro ♉: {MapZodiacSigns["Tauro"]}";
             }
             else if ((mes.Equals("Mayo") && (dia >= 21 && dia <= 31)) || (mes.Equals("Junio") && (dia >= 1 && dia <= 20)))
             {
-                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
+                response += $"Géminis ♊: {MapZodiacSigns["Géminis"]}";
             }
             else if ((mes.Equals("Junio") && (dia >= 21 && dia <= 30)) || (mes.Equals("Julio") && (dia >= 1 && dia <= 22)))
             {
-                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
+                response += $"Cáncer ♋: {MapZodiacSigns["Cáncer"]}";
             }
             else if ((mes.Equals("Julio") && (dia >= 23 && dia <= 31)) || (mes.Equals("Agosto") && (dia >= 1 && dia <= 22)))
             {
-                response += $"Leo: {MapZodiacSigns["Leo"]}";
+                response += $"Leo ♌: {MapZodiacSigns["Leo"]}";
             }
             else if ((mes.Equals("Agosto") && (dia >= 23 && dia <= 31)) || (mes.Equals("Septiembre") && (dia >= 1 && dia <= 22)))
             {
-                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
+                response += $"Virgo ♍: {MapZodiacSigns["Virgo"]}";
             }
             else if ((mes.Equals("Septiembre") && (dia >= 23 && dia <= 30)) || (mes.Equals("Octubre") && (dia >= 1 && dia <= 22)))
             {
-                response += $"Libra: {MapZodiacSigns["Libra"]}";
+                response += $"Libra ♎: {MapZodiacSigns["Libra"]}";
             }
             else if ((mes.Equals("Octubre") && (dia >= 23 && dia <= 31)) || (mes.Equals("Noviembre") && (dia >= 1 && dia <= 21)))
             {
-                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
+                response += $"Escorpio ♏: {MapZodiacSigns["Escorpio"]}";
             }
             else if ((mes.Equals("Noviembre") && (dia >= 22 && dia <= 30)) || (mes.Equals("Diciembre") && (dia >= 1 && dia <= 21)))
             {
-                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
+                response += $"Sagitario ♐: {MapZodiacSigns["Sagitario"]}";
             }
 
             return response;
