@@ -95,6 +95,79 @@ namespace MHSignoZodiacal
 
             return days;
         }
+
+        private string GetDescripcionSigno(string mes, int dia)
+        {
+            string response = "Tu signo es ";
+
+            if ((mes.Equals("Diciembre") && (dia >= 22 && dia <= 31)) || (mes.Equals("Enero") && (dia >= 1 && dia <= 19)))
+            {
+                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
+            }
+            else if ((mes.Equals("Enero") && (dia >= 20 && dia <= 31)) || (mes.Equals("Febrero") && (dia >= 1 && dia <= 18)))
+            {
+                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
+            }
+            else if ((mes.Equals("Febrero") && (dia >= 19 && dia <= 29)) || (mes.Equals("Marzo") && (dia >= 1 && dia <= 20)))
+            {
+                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
+            }
+            else if ((mes.Equals("Marzo") && (dia >= 21 && dia <= 31)) || (mes.Equals("Abril") && (dia >= 1 && dia <= 19)))
+            {
+                response += $"Aries: {MapZodiacSigns["Aries"]}";
+            }
+            else if ((mes.Equals("Abril") && (dia >= 20 && dia <= 30)) || (mes.Equals("Mayo") && (dia >= 1 && dia <= 20)))
+            {
+                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
+            }
+            else if ((mes.Equals("Mayo") && (dia >= 21 && dia <= 31)) || (mes.Equals("Junio") && (dia >= 1 && dia <= 20)))
+            {
+                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
+            }
+            else if ((mes.Equals("Junio") && (dia >= 21 && dia <= 30)) || (mes.Equals("Julio") && (dia >= 1 && dia <= 22)))
+            {
+                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
+            }
+            else if ((mes.Equals("Julio") && (dia >= 23 && dia <= 31)) || (mes.Equals("Agosto") && (dia >= 1 && dia <= 22)))
+            {
+                response += $"Leo: {MapZodiacSigns["Leo"]}";
+            }
+            else if ((mes.Equals("Agosto") && (dia >= 23 && dia <= 31)) || (mes.Equals("Septiembre") && (dia >= 1 && dia <= 22)))
+            {
+                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
+            }
+            else if ((mes.Equals("Septiembre") && (dia >= 23 && dia <= 30)) || (mes.Equals("Octubre") && (dia >= 1 && dia <= 22)))
+            {
+                response += $"Libra: {MapZodiacSigns["Libra"]}";
+            }
+            else if ((mes.Equals("Octubre") && (dia >= 23 && dia <= 31)) || (mes.Equals("Noviembre") && (dia >= 1 && dia <= 21)))
+            {
+                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
+            }
+            else if ((mes.Equals("Noviembre") && (dia >= 22 && dia <= 30)) || (mes.Equals("Diciembre") && (dia >= 1 && dia <= 21)))
+            {
+                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
+            }
+
+            return response;
+        }
+
+        private void PrintOutput()
+        {
+            if(this.comboDia.SelectedIndex != 0)
+            {
+                string mes = this.comboMes.Text;
+                int dia = Int32.Parse(this.comboDia.Text);
+
+                txtSalida.Visible = true;
+                txtSalida.Text = GetDescripcionSigno(mes, dia);
+            }
+            else
+            {
+                txtSalida.Visible = false;
+                txtSalida.Text = String.Empty;
+            }
+        }
         #endregion
 
         #region Eventos
@@ -119,10 +192,17 @@ namespace MHSignoZodiacal
         {
             txtSalida.Text = String.Empty;
 
-            bool isDay = (this.comboDia.SelectedIndex != 0);
+            if(btnConsultar.Enabled)
+            {
+                PrintOutput();
+            }
+            else
+            {
+                bool isDay = (this.comboDia.SelectedIndex != 0);
 
-            btnConsultar.Enabled = isDay;
-            btnResetear.Enabled = isDay;
+                btnConsultar.Enabled = isDay;
+                btnResetear.Enabled = isDay;
+            }
         }
 
         private void btnResetear_Click(object sender, EventArgs e)
@@ -132,109 +212,7 @@ namespace MHSignoZodiacal
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            string mes = this.comboMes.Text;
-            int dia = Int32.Parse(this.comboDia.Text);
-            string response = "Tu signo es ";
-
-            if (mes.Equals("Enero") && (dia >= 1 && dia <= 19))
-            {
-                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
-            }
-            else if (mes.Equals("Enero") && (dia >= 20 && dia <= 31))
-            {
-                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
-            }
-            else if (mes.Equals("Febrero") && (dia >= 1 && dia <= 18))
-            {
-                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
-            }
-            else if (mes.Equals("Febrero") && (dia >= 19 && dia <= 29))
-            {
-                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
-            }
-            else if (mes.Equals("Marzo") && (dia >= 1 && dia <= 20))
-            {
-                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
-            }
-            else if (mes.Equals("Marzo") && (dia >= 21 && dia <= 31))
-            {
-                response += $"Aries: {MapZodiacSigns["Aries"]}";
-            }
-            else if (mes.Equals("Abril") && (dia >= 1 && dia <= 19))
-            {
-                response += $"Aries: {MapZodiacSigns["Aries"]}";
-            }
-            else if (mes.Equals("Abril") && (dia >= 20 && dia <= 30))
-            {
-                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
-            }
-            else if (mes.Equals("Mayo") && (dia >= 1 && dia <= 20))
-            {
-                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
-            }
-            else if (mes.Equals("Mayo") && (dia >= 21 && dia <= 31))
-            {
-                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
-            }
-            else if (mes.Equals("Junio") && (dia >= 1 && dia <= 20))
-            {
-                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
-            }
-            else if (mes.Equals("Junio") && (dia >= 21 && dia <= 30))
-            {
-                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
-            }
-            else if (mes.Equals("Julio") && (dia >= 1 && dia <= 22))
-            {
-                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
-            }
-            else if (mes.Equals("Julio") && (dia >= 23 && dia <= 31))
-            {
-                response += $"Leo: {MapZodiacSigns["Leo"]}";
-            }
-            else if (mes.Equals("Agosto") && (dia >= 1 && dia <= 22))
-            {
-                response += $"Leo: {MapZodiacSigns["Leo"]}";
-            }
-            else if (mes.Equals("Agosto") && (dia >= 23 && dia <= 31))
-            {
-                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
-            }
-            else if (mes.Equals("Septiembre") && (dia >= 1 && dia <= 22))
-            {
-                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
-            }
-            else if (mes.Equals("Septiembre") && (dia >= 23 && dia <= 30))
-            {
-                response += $"Libra: {MapZodiacSigns["Libra"]}";
-            }
-            else if (mes.Equals("Octubre") && (dia >= 1 && dia <= 22))
-            {
-                response += $"Libra: {MapZodiacSigns["Libra"]}";
-            }
-            else if (mes.Equals("Octubre") && (dia >= 23 && dia <= 31))
-            {
-                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
-            }
-            else if (mes.Equals("Noviembre") && (dia >= 1 && dia <= 21))
-            {
-                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
-            }
-            else if (mes.Equals("Noviembre") && (dia >= 22 && dia <= 30))
-            {
-                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
-            }
-            else if (mes.Equals("Diciembre") && (dia >= 1 && dia <= 21))
-            {
-                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
-            }
-            else if (mes.Equals("Diciembre") && (dia >= 22 && dia <= 31))
-            {
-                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
-            }
-
-            txtSalida.Visible = true;
-            txtSalida.Text = response;
+            PrintOutput();
         }
         #endregion
 
