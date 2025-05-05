@@ -19,6 +19,22 @@ namespace MHSignoZodiacal
         {
             MapMonthDays = new Dictionary<string, int>();
 
+            Signos = new List<SignoZodiacal>()
+            {
+                new SignoZodiacal { Nombre = "Capricornio", InicioMes = 12, InicioDia = 22, FinMes = 1, FinDia = 19 },
+                new SignoZodiacal { Nombre = "Acuario",     InicioMes = 1,  InicioDia = 20, FinMes = 2, FinDia = 18 },
+                new SignoZodiacal { Nombre = "Piscis", InicioMes = 2, InicioDia = 19, FinMes = 3, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Aries", InicioMes = 3, InicioDia = 21, FinMes = 4, FinDia = 19 },
+                new SignoZodiacal { Nombre = "Tauro", InicioMes = 4, InicioDia = 20, FinMes = 5, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Géminis", InicioMes = 5, InicioDia = 21, FinMes = 6, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Cáncer", InicioMes = 6, InicioDia = 21, FinMes = 7, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Leo", InicioMes = 7, InicioDia = 23, FinMes = 8, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Virgo", InicioMes = 8, InicioDia = 23, FinMes = 9, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Libra", InicioMes = 9, InicioDia = 23, FinMes = 10, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Escorpio", InicioMes = 10, InicioDia = 23, FinMes = 11, FinDia = 21 },
+                new SignoZodiacal { Nombre = "Sagitario", InicioMes = 11, InicioDia = 22, FinMes = 12, FinDia = 21 }
+            };
+
             InitializeComponent();
 
             Reset();
@@ -98,74 +114,6 @@ namespace MHSignoZodiacal
             return days;
         }
 
-        private string GetEmoji(string signo) => emojis[signo];
-
-        private string GetDescripcionSigno(string mesTexto, int dia)
-        {
-            int mes = DateTime.ParseExact(mesTexto, "MMMM", System.Globalization.CultureInfo.CurrentCulture).Month;
-
-            RangoZodiacal signo = rangos.FirstOrDefault(r => (r.InicioMes == mes && dia >= r.InicioDia) || (r.FinMes == mes && dia <= r.FinDia));
-
-            return signo != null ? $"Tu signo es: {signo.Nombre} {GetEmoji(signo.Nombre)}: {MapZodiacSigns[signo.Nombre]}" : "Fecha inválida.";
-        }
-
-        private string GetDescripcionSignoCondicional(string mesTexto, int dia)
-        {
-            string response = "Tu signo es ";
-            int mes = DateTime.ParseExact(mesTexto, "MMMM", System.Globalization.CultureInfo.CurrentCulture).Month;
-
-            if (((mes == 12) && (dia >= 22 && dia <= 31)) || ((mes == 1) && (dia >= 1 && dia <= 19)))
-            {
-                response += $"Capricornio ♑: {MapZodiacSigns["Capricornio"]}";
-            }
-            else if (((mes == 1) && (dia >= 20 && dia <= 31)) || ((mes == 2) && (dia >= 1 && dia <= 18)))
-            {
-                response += $"Acuario ♒: {MapZodiacSigns["Acuario"]}";
-            }
-            else if (((mes == 2) && (dia >= 19 && dia <= 29)) || ((mes == 3) && (dia >= 1 && dia <= 20)))
-            {
-                response += $"Piscis ♓: {MapZodiacSigns["Piscis"]}";
-            }
-            else if (((mes == 3) && (dia >= 21 && dia <= 31)) || ((mes == 4) && (dia >= 1 && dia <= 19)))
-            {
-                response += $"Aries ♈: {MapZodiacSigns["Aries"]}";
-            }
-            else if (((mes == 4) && (dia >= 20 && dia <= 30)) || ((mes == 5) && (dia >= 1 && dia <= 20)))
-            {
-                response += $"Tauro ♉: {MapZodiacSigns["Tauro"]}";
-            }
-            else if (((mes == 5) && (dia >= 21 && dia <= 31)) || ((mes == 6) && (dia >= 1 && dia <= 20)))
-            {
-                response += $"Géminis ♊: {MapZodiacSigns["Géminis"]}";
-            }
-            else if (((mes == 6) && (dia >= 21 && dia <= 30)) || ((mes == 7) && (dia >= 1 && dia <= 22)))
-            {
-                response += $"Cáncer ♋: {MapZodiacSigns["Cáncer"]}";
-            }
-            else if (((mes == 7) && (dia >= 23 && dia <= 31)) || ((mes == 8) && (dia >= 1 && dia <= 22)))
-            {
-                response += $"Leo ♌: {MapZodiacSigns["Leo"]}";
-            }
-            else if (((mes == 8) && (dia >= 23 && dia <= 31)) || ((mes == 9) && (dia >= 1 && dia <= 22)))
-            {
-                response += $"Virgo ♍: {MapZodiacSigns["Virgo"]}";
-            }
-            else if (((mes == 9) && (dia >= 23 && dia <= 30)) || ((mes == 10) && (dia >= 1 && dia <= 22)))
-            {
-                response += $"Libra ♎: {MapZodiacSigns["Libra"]}";
-            }
-            else if (((mes == 10) && (dia >= 23 && dia <= 31)) || ((mes == 11) && (dia >= 1 && dia <= 21)))
-            {
-                response += $"Escorpio ♏: {MapZodiacSigns["Escorpio"]}";
-            }
-            else if (((mes == 11) && (dia >= 22 && dia <= 30)) || ((mes == 12) && (dia >= 1 && dia <= 21)))
-            {
-                response += $"Sagitario ♐: {MapZodiacSigns["Sagitario"]}";
-            }
-
-            return response;
-        }
-
         private void PrintOutput()
         {
             if(this.comboDia.SelectedIndex != 0)
@@ -174,8 +122,8 @@ namespace MHSignoZodiacal
                 int dia = Int32.Parse(this.comboDia.Text);
 
                 txtSalida.Visible = true;
-                //txtSalida.Text = GetDescripcionSigno(mes, dia);
-                txtSalida.Text = GetDescripcionSignoCondicional(mes, dia);
+                // txtSalida.Text = SignoZodiacalCondicional.GetDescripcionSigno(mes, dia);
+                txtSalida.Text = (new SignoZodiacal()).GetDescripcionSigno(mes, dia, Signos);
             }
             else
             {
@@ -232,55 +180,8 @@ namespace MHSignoZodiacal
         #endregion
 
         #region Propiedades
-        Dictionary<string, int> MapMonthDays;
-
-        Dictionary<string, string> MapZodiacSigns = new Dictionary<string, string>()
-        {
-            { "Capricornio", " un signo de tierra regido por Saturno, se caracteriza por su disciplina, ambición y responsabilidad." },
-            { "Acuario", " un signo de aire y se caracteriza por su naturaleza independiente, intelectual y humanitaria." },
-            { "Piscis", " un signo de agua y el último del zodiaco, se caracteriza por su profunda sensibilidad, empatía y creatividad." },
-            { "Aries", " el primer signo del zodiaco, un signo de fuego, se caracteriza por ser enérgico, apasionado y líder." },
-            { "Tauro", " se caracteriza por su naturaleza terrestre, lo que le otorga cualidades de estabilidad, persistencia y un enfoque práctico en la vida." },
-            { "Géminis", " un signo de aire y regido por Mercurio, se caracterizan por su naturaleza dual, comunicativa, curiosa y adaptable." },
-            { "Cáncer", " un signo de agua, lo que le otorga una naturaleza emocional, intuitiva y sensible." },
-            { "Leo", " un signo de fuego, regidos por el Sol, son conocidos por su naturaleza cálida, extrovertida y generosa." },
-            { "Virgo", " un signo de tierra y mutable, caracterizado por su naturaleza analítica, metódica y práctica." },
-            { "Libra", " un signo de aire, lo que significa que sus características incluyen inteligencia, capacidad de comunicación, adaptabilidad y un fuerte sentido de la justicia y la armonía." },
-            { "Escorpio", " un signo zodiacal de agua, conocido por su intensidad emocional, pasión y profundidad." },
-            { "Sagitario", " un signo zodiacal de fuego, representado por un centauro con flecha, que simboliza la búsqueda de la verdad y la libertad." }
-        };
-
-        List<RangoZodiacal> rangos = new List<RangoZodiacal>()
-        {
-            new RangoZodiacal { Nombre = "Capricornio", InicioMes = 12, InicioDia = 22, FinMes = 1, FinDia = 19 },
-            new RangoZodiacal { Nombre = "Acuario",     InicioMes = 1,  InicioDia = 20, FinMes = 2, FinDia = 18 },
-            new RangoZodiacal { Nombre = "Piscis",      InicioMes = 2,  InicioDia = 19, FinMes = 3, FinDia = 20 },
-            new RangoZodiacal { Nombre = "Aries",       InicioMes = 3,  InicioDia = 21, FinMes = 4, FinDia = 19 },
-            new RangoZodiacal { Nombre = "Tauro",       InicioMes = 4,  InicioDia = 20, FinMes = 5, FinDia = 20 },
-            new RangoZodiacal { Nombre = "Géminis",     InicioMes = 5,  InicioDia = 21, FinMes = 6, FinDia = 20 },
-            new RangoZodiacal { Nombre = "Cáncer",      InicioMes = 6,  InicioDia = 21, FinMes = 7, FinDia = 22 },
-            new RangoZodiacal { Nombre = "Leo",         InicioMes = 7,  InicioDia = 23, FinMes = 8, FinDia = 22 },
-            new RangoZodiacal { Nombre = "Virgo",       InicioMes = 8,  InicioDia = 23, FinMes = 9, FinDia = 22 },
-            new RangoZodiacal { Nombre = "Libra",       InicioMes = 9,  InicioDia = 23, FinMes = 10, FinDia = 22 },
-            new RangoZodiacal { Nombre = "Escorpio",    InicioMes = 10, InicioDia = 23, FinMes = 11, FinDia = 21 },
-            new RangoZodiacal { Nombre = "Sagitario",   InicioMes = 11, InicioDia = 22, FinMes = 12, FinDia = 21 }
-        };
-
-        Dictionary<string, string> emojis = new Dictionary<string, string>()
-        {
-            { "Capricornio", "♑" },
-            { "Acuario", "♒" },
-            { "Piscis", "♓" },
-            { "Aries", "♈" },
-            { "Tauro", "♉" },
-            { "Géminis", "♊" },
-            { "Cáncer", "♋" },
-            { "Leo", "♌" },
-            { "Virgo", "♍" },
-            { "Libra", "♎" },
-            { "Escorpio", "♏" },
-            { "Sagitario", "♐" }
-        };
+        private Dictionary<string, int> MapMonthDays;
+        List<SignoZodiacal> Signos;
         #endregion
     }
 }
