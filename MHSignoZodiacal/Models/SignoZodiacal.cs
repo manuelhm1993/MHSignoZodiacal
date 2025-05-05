@@ -44,13 +44,34 @@ namespace MHSignoZodiacal.Models
             };
         }
 
+        private List<SignoZodiacal> GetSignos()
+        {
+            List<SignoZodiacal> Signos = new List<SignoZodiacal>()
+            {
+                new SignoZodiacal { Nombre = "Capricornio", InicioMes = 12, InicioDia = 22, FinMes = 1, FinDia = 19 },
+                new SignoZodiacal { Nombre = "Acuario",     InicioMes = 1,  InicioDia = 20, FinMes = 2, FinDia = 18 },
+                new SignoZodiacal { Nombre = "Piscis", InicioMes = 2, InicioDia = 19, FinMes = 3, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Aries", InicioMes = 3, InicioDia = 21, FinMes = 4, FinDia = 19 },
+                new SignoZodiacal { Nombre = "Tauro", InicioMes = 4, InicioDia = 20, FinMes = 5, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Géminis", InicioMes = 5, InicioDia = 21, FinMes = 6, FinDia = 20 },
+                new SignoZodiacal { Nombre = "Cáncer", InicioMes = 6, InicioDia = 21, FinMes = 7, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Leo", InicioMes = 7, InicioDia = 23, FinMes = 8, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Virgo", InicioMes = 8, InicioDia = 23, FinMes = 9, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Libra", InicioMes = 9, InicioDia = 23, FinMes = 10, FinDia = 22 },
+                new SignoZodiacal { Nombre = "Escorpio", InicioMes = 10, InicioDia = 23, FinMes = 11, FinDia = 21 },
+                new SignoZodiacal { Nombre = "Sagitario", InicioMes = 11, InicioDia = 22, FinMes = 12, FinDia = 21 }
+            };
+
+            return Signos;
+        }
+
         private string GetEmoji(string signo) => Emojis[signo];
 
-        public string GetDescripcionSigno(string mesTexto, int dia, List<SignoZodiacal> Signos)
+        public string GetDescripcionSigno(string mesTexto, int dia)
         {
             int mes = DateTime.ParseExact(mesTexto, "MMMM", System.Globalization.CultureInfo.CurrentCulture).Month;
 
-            SignoZodiacal signo = Signos.FirstOrDefault(r => (r.InicioMes == mes && dia >= r.InicioDia) || (r.FinMes == mes && dia <= r.FinDia));
+            SignoZodiacal signo = GetSignos().FirstOrDefault(r => (r.InicioMes == mes && dia >= r.InicioDia) || (r.FinMes == mes && dia <= r.FinDia));
 
             return signo != null ? $"Tu signo es: {signo.Nombre} {GetEmoji(signo.Nombre)}: {MapZodiacSigns[signo.Nombre]}" : "Fecha inválida.";
         }
@@ -64,7 +85,6 @@ namespace MHSignoZodiacal.Models
         public int FinDia { get; set; }
         public Dictionary<string, string> MapZodiacSigns { get; }
         public Dictionary<string, string> Emojis { get; }
-        public List<SignoZodiacal> Signos { get; }
         #endregion
     }
 }
