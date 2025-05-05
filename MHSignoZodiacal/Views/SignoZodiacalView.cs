@@ -15,19 +15,16 @@ namespace MHSignoZodiacal.Views
 {
     public partial class SignoZodiacalView : Form
     {
+        #region Métodos
         public SignoZodiacalView()
         {
-            MapMonthDays = new Dictionary<string, int>();
-
             InitializeComponent();
+            Reset();
 
             SignoZodiacalController.FormSignoZodiacal = this;
-
-            Reset();
-            SetMeses();
+            SignoZodiacalController.SetMeses();
         }
 
-        #region Métodos
         private void Reset()
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -45,50 +42,6 @@ namespace MHSignoZodiacal.Views
 
             // Ocultar componentes
             this.txtSalida.Visible = false;
-        }
-
-        private void SetMeses()
-        {
-            string mesActual = String.Empty;
-
-            for (int mes = 1; mes <= 12; mes++)
-            {
-                DateTime fecha = new DateTime(DateTime.Now.Year, mes, 1);
-                
-                mesActual = fecha.ToString("MMMM");
-
-                MapMonthDays.Add(Capitalize(mesActual), GetDaysOfMonth(DateTime.Now.Year, mes));
-            }
-
-            this.comboMes.Items.AddRange(MapMonthDays.Keys.ToArray());
-        }
-
-        private void SetDias(string month)
-        {
-            string firstItem = this.comboDia.Items[0].ToString();
-            
-            this.comboDia.Items.Clear();
-            
-            this.comboDia.Items.Add(firstItem);
-            this.comboDia.Items.AddRange(GetRange(MapMonthDays[month]));
-
-            this.comboDia.SelectedIndex = 0;
-        }
-
-        private string Capitalize(string word) => char.ToUpper(word[0]) + word.Substring(1);
-
-        private int GetDaysOfMonth(int year, int month) => DateTime.DaysInMonth(year, month);
-
-        private Object[] GetRange(int range)
-        {
-            Object[] days = new Object[range];
-            
-            for(int i = 1; i <= range; i++)
-            {
-                days[i - 1] = i;
-            }
-
-            return days;
         }
 
         private void PrintOutput()
@@ -120,7 +73,7 @@ namespace MHSignoZodiacal.Views
             {
                 this.comboDia.Enabled = true;
 
-                SetDias(this.comboMes.Text);
+                SignoZodiacalController.SetDias(this.comboMes.Text);
             }
             else
             {
@@ -154,10 +107,6 @@ namespace MHSignoZodiacal.Views
         {
             PrintOutput();
         }
-        #endregion
-
-        #region Propiedades
-        private Dictionary<string, int> MapMonthDays;
         #endregion
     }
 }

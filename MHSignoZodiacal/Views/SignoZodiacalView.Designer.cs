@@ -163,10 +163,19 @@
         public System.Windows.Forms.TextBox _txtSalida
         {
             get => txtSalida;
-            set
-            {
-                _txtSalida = txtSalida;
-            }
+            set => _txtSalida = txtSalida;
+        }
+
+        public System.Windows.Forms.ComboBox _comboMes
+        {
+            get => comboMes;
+            set => _comboMes = comboMes;
+        }
+
+        public System.Windows.Forms.ComboBox _comboDia
+        {
+            get => comboDia;
+            set => _comboDia = comboDia;
         }
         #endregion
 
