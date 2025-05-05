@@ -68,6 +68,7 @@
             this.comboMes.Name = "comboMes";
             this.comboMes.Size = new System.Drawing.Size(180, 26);
             this.comboMes.TabIndex = 0;
+            this.comboMes.SelectedIndexChanged += new System.EventHandler(this.comboMes_SelectedIndexChanged);
             // 
             // comboDia
             // 
