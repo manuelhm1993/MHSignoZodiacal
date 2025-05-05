@@ -16,7 +16,7 @@ namespace MHSignoZodiacal.Controllers
         public static void SetDescripcionSigno(string mes, int dia)
         {
             // FormSignoZodiacal._txtSalida.Text = SignoZodiacalCondicional.GetDescripcionSigno(mes, dia);
-            FormSignoZodiacal._txtSalida.Text = (new SignoZodiacal()).GetDescripcionSigno(mes, dia);
+            FormSignoZodiacal._txtSalida.Text = SignoZodiacal.GetDescripcionSigno(mes, dia);
         }
 
         public static void SetMeses()
