@@ -19,22 +19,6 @@ namespace MHSignoZodiacal
         {
             MapMonthDays = new Dictionary<string, int>();
 
-            Signos = new List<SignoZodiacal>()
-            {
-                new SignoZodiacal { Nombre = "Capricornio", InicioMes = 12, InicioDia = 22, FinMes = 1, FinDia = 19 },
-                new SignoZodiacal { Nombre = "Acuario",     InicioMes = 1,  InicioDia = 20, FinMes = 2, FinDia = 18 },
-                new SignoZodiacal { Nombre = "Piscis", InicioMes = 2, InicioDia = 19, FinMes = 3, FinDia = 20 },
-                new SignoZodiacal { Nombre = "Aries", InicioMes = 3, InicioDia = 21, FinMes = 4, FinDia = 19 },
-                new SignoZodiacal { Nombre = "Tauro", InicioMes = 4, InicioDia = 20, FinMes = 5, FinDia = 20 },
-                new SignoZodiacal { Nombre = "Géminis", InicioMes = 5, InicioDia = 21, FinMes = 6, FinDia = 20 },
-                new SignoZodiacal { Nombre = "Cáncer", InicioMes = 6, InicioDia = 21, FinMes = 7, FinDia = 22 },
-                new SignoZodiacal { Nombre = "Leo", InicioMes = 7, InicioDia = 23, FinMes = 8, FinDia = 22 },
-                new SignoZodiacal { Nombre = "Virgo", InicioMes = 8, InicioDia = 23, FinMes = 9, FinDia = 22 },
-                new SignoZodiacal { Nombre = "Libra", InicioMes = 9, InicioDia = 23, FinMes = 10, FinDia = 22 },
-                new SignoZodiacal { Nombre = "Escorpio", InicioMes = 10, InicioDia = 23, FinMes = 11, FinDia = 21 },
-                new SignoZodiacal { Nombre = "Sagitario", InicioMes = 11, InicioDia = 22, FinMes = 12, FinDia = 21 }
-            };
-
             InitializeComponent();
 
             Reset();
@@ -61,28 +45,19 @@ namespace MHSignoZodiacal
             this.txtSalida.Visible = false;
         }
 
-        private void MapMonthsObject(int typeMap)
+        private void SetMeses()
         {
             string mesActual = String.Empty;
 
             for (int mes = 1; mes <= 12; mes++)
             {
                 DateTime fecha = new DateTime(DateTime.Now.Year, mes, 1);
+                
                 mesActual = fecha.ToString("MMMM");
 
-                switch(typeMap)
-                {
-                    case 0:
-                        MapMonthDays.Add(Capitalize(mesActual), GetDaysOfMonth(DateTime.Now.Year, mes));
-                        break;
-                }
+                MapMonthDays.Add(Capitalize(mesActual), GetDaysOfMonth(DateTime.Now.Year, mes));
             }
-        }
 
-        private void SetMeses()
-        {
-            MapMonthsObject(0);
-            //MapMonthsObject(1);
             this.comboMes.Items.AddRange(MapMonthDays.Keys.ToArray());
         }
 
@@ -123,7 +98,7 @@ namespace MHSignoZodiacal
 
                 txtSalida.Visible = true;
                 // txtSalida.Text = SignoZodiacalCondicional.GetDescripcionSigno(mes, dia);
-                txtSalida.Text = (new SignoZodiacal()).GetDescripcionSigno(mes, dia, Signos);
+                txtSalida.Text = (new SignoZodiacal()).GetDescripcionSigno(mes, dia);
             }
             else
             {
@@ -181,7 +156,6 @@ namespace MHSignoZodiacal
 
         #region Propiedades
         private Dictionary<string, int> MapMonthDays;
-        List<SignoZodiacal> Signos;
         #endregion
     }
 }

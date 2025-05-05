@@ -16,51 +16,51 @@ namespace MHSignoZodiacal.Models
 
             if (((mes == 12) && (dia >= 22 && dia <= 31)) || ((mes == 1) && (dia >= 1 && dia <= 19)))
             {
-                response += $"Capricornio ♑: {MapZodiacSigns["Capricornio"]}";
+                response += $"Capricornio ♑: {MapDescripcionSignos["Capricornio"]}";
             }
             else if (((mes == 1) && (dia >= 20 && dia <= 31)) || ((mes == 2) && (dia >= 1 && dia <= 18)))
             {
-                response += $"Acuario ♒: {MapZodiacSigns["Acuario"]}";
+                response += $"Acuario ♒: {MapDescripcionSignos["Acuario"]}";
             }
             else if (((mes == 2) && (dia >= 19 && dia <= 29)) || ((mes == 3) && (dia >= 1 && dia <= 20)))
             {
-                response += $"Piscis ♓: {MapZodiacSigns["Piscis"]}";
+                response += $"Piscis ♓: {MapDescripcionSignos["Piscis"]}";
             }
             else if (((mes == 3) && (dia >= 21 && dia <= 31)) || ((mes == 4) && (dia >= 1 && dia <= 19)))
             {
-                response += $"Aries ♈: {MapZodiacSigns["Aries"]}";
+                response += $"Aries ♈: {MapDescripcionSignos["Aries"]}";
             }
             else if (((mes == 4) && (dia >= 20 && dia <= 30)) || ((mes == 5) && (dia >= 1 && dia <= 20)))
             {
-                response += $"Tauro ♉: {MapZodiacSigns["Tauro"]}";
+                response += $"Tauro ♉: {MapDescripcionSignos["Tauro"]}";
             }
             else if (((mes == 5) && (dia >= 21 && dia <= 31)) || ((mes == 6) && (dia >= 1 && dia <= 20)))
             {
-                response += $"Géminis ♊: {MapZodiacSigns["Géminis"]}";
+                response += $"Géminis ♊: {MapDescripcionSignos["Géminis"]}";
             }
             else if (((mes == 6) && (dia >= 21 && dia <= 30)) || ((mes == 7) && (dia >= 1 && dia <= 22)))
             {
-                response += $"Cáncer ♋: {MapZodiacSigns["Cáncer"]}";
+                response += $"Cáncer ♋: {MapDescripcionSignos["Cáncer"]}";
             }
             else if (((mes == 7) && (dia >= 23 && dia <= 31)) || ((mes == 8) && (dia >= 1 && dia <= 22)))
             {
-                response += $"Leo ♌: {MapZodiacSigns["Leo"]}";
+                response += $"Leo ♌: {MapDescripcionSignos["Leo"]}";
             }
             else if (((mes == 8) && (dia >= 23 && dia <= 31)) || ((mes == 9) && (dia >= 1 && dia <= 22)))
             {
-                response += $"Virgo ♍: {MapZodiacSigns["Virgo"]}";
+                response += $"Virgo ♍: {MapDescripcionSignos["Virgo"]}";
             }
             else if (((mes == 9) && (dia >= 23 && dia <= 30)) || ((mes == 10) && (dia >= 1 && dia <= 22)))
             {
-                response += $"Libra ♎: {MapZodiacSigns["Libra"]}";
+                response += $"Libra ♎: {MapDescripcionSignos["Libra"]}";
             }
             else if (((mes == 10) && (dia >= 23 && dia <= 31)) || ((mes == 11) && (dia >= 1 && dia <= 21)))
             {
-                response += $"Escorpio ♏: {MapZodiacSigns["Escorpio"]}";
+                response += $"Escorpio ♏: {MapDescripcionSignos["Escorpio"]}";
             }
             else if (((mes == 11) && (dia >= 22 && dia <= 30)) || ((mes == 12) && (dia >= 1 && dia <= 21)))
             {
-                response += $"Sagitario ♐: {MapZodiacSigns["Sagitario"]}";
+                response += $"Sagitario ♐: {MapDescripcionSignos["Sagitario"]}";
             }
 
             return response;
@@ -68,7 +68,7 @@ namespace MHSignoZodiacal.Models
         #endregion
 
         #region Propiedades
-        private static Dictionary<string, string> MapZodiacSigns = new Dictionary<string, string>()
+        private static Dictionary<string, string> MapDescripcionSignos = new Dictionary<string, string>()
         {
             { "Capricornio", " un signo de tierra regido por Saturno, se caracteriza por su disciplina, ambición y responsabilidad." },
             { "Acuario", " un signo de aire y se caracteriza por su naturaleza independiente, intelectual y humanitaria." },
