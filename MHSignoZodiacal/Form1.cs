@@ -16,10 +16,24 @@ namespace MHSignoZodiacal
         {
             InitializeComponent();
 
+            Reset();
+            SetMeses();
+        }
+
+        private void Reset()
+        {
+            // Establecer los valores por defecto de los combos
             this.comboMes.SelectedIndex = 0;
             this.comboDia.SelectedIndex = 0;
 
-            SetMeses();
+            // Desactivar componentes
+            this.txtSalida.Enabled = false;
+            this.btnConsultar.Enabled = false;
+            this.btnResetear.Enabled = false;
+            this.comboDia.Enabled = false;
+
+            // Ocultar componentes
+            this.txtSalida.Visible = false;
         }
 
         private void SetMeses()
@@ -28,11 +42,13 @@ namespace MHSignoZodiacal
 
             for (int mes = 1; mes <= 12; mes++)
             {
-                DateTime fecha = new DateTime(2025, mes, 1);
+                DateTime fecha = new DateTime(DateTime.Now.Year, mes, 1);
                 mesActual = fecha.ToString("MMMM");
 
-                this.comboMes.Items.Add(mesActual);
+                this.comboMes.Items.Add(Capitalize(mesActual));
             }
         }
+
+        private string Capitalize(string word) => char.ToUpper(word[0]) + word.Substring(1);
     }
 }
