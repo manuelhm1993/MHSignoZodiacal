@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,6 @@ namespace MHSignoZodiacal
         public Form1()
         {
             MapMonthDays = new Dictionary<string, int>();
-            MapMonthZodiacSigns = new Dictionary<string, string[]>();
 
             InitializeComponent();
 
@@ -56,9 +56,6 @@ namespace MHSignoZodiacal
                 {
                     case 0:
                         MapMonthDays.Add(Capitalize(mesActual), GetDaysOfMonth(DateTime.Now.Year, mes));
-                        break;
-                    case 1:
-                        MapMonthZodiacSigns.Add(Capitalize(mesActual), MapZodiacSigns[Capitalize(mesActual)]);
                         break;
                 }
             }
@@ -137,103 +134,103 @@ namespace MHSignoZodiacal
         {
             string mes = this.comboMes.Text;
             int dia = Int32.Parse(this.comboDia.Text);
-            string response = String.Empty;
+            string response = "Tu signo es ";
 
             if (mes.Equals("Enero") && (dia >= 1 && dia <= 19))
             {
-                response = "Tu signo es Capricornio";
+                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
             }
             else if (mes.Equals("Enero") && (dia >= 20 && dia <= 31))
             {
-                response = "Tu signo es Acuario";
+                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
             }
             else if (mes.Equals("Febrero") && (dia >= 1 && dia <= 18))
             {
-                response = "Tu signo es Acuario";
+                response += $"Acuario: {MapZodiacSigns["Acuario"]}";
             }
             else if (mes.Equals("Febrero") && (dia >= 19 && dia <= 29))
             {
-                response = "Tu signo es Piscis";
+                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
             }
             else if (mes.Equals("Marzo") && (dia >= 1 && dia <= 20))
             {
-                response = "Tu signo es Piscis";
+                response += $"Piscis: {MapZodiacSigns["Piscis"]}";
             }
             else if (mes.Equals("Marzo") && (dia >= 21 && dia <= 31))
             {
-                response = "Tu signo es Aries";
+                response += $"Aries: {MapZodiacSigns["Aries"]}";
             }
             else if (mes.Equals("Abril") && (dia >= 1 && dia <= 19))
             {
-                response = "Tu signo es Aries";
+                response += $"Aries: {MapZodiacSigns["Aries"]}";
             }
             else if (mes.Equals("Abril") && (dia >= 20 && dia <= 30))
             {
-                response = "Tu signo es Tauro";
+                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
             }
             else if (mes.Equals("Mayo") && (dia >= 1 && dia <= 20))
             {
-                response = "Tu signo es Tauro";
+                response += $"Tauro: {MapZodiacSigns["Tauro"]}";
             }
             else if (mes.Equals("Mayo") && (dia >= 21 && dia <= 31))
             {
-                response = "Tu signo es Géminis";
+                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
             }
             else if (mes.Equals("Junio") && (dia >= 1 && dia <= 20))
             {
-                response = "Tu signo es Géminis";
+                response += $"Géminis: {MapZodiacSigns["Géminis"]}";
             }
             else if (mes.Equals("Junio") && (dia >= 21 && dia <= 30))
             {
-                response = "Tu signo es Cáncer";
+                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
             }
             else if (mes.Equals("Julio") && (dia >= 1 && dia <= 22))
             {
-                response = "Tu signo es Cáncer";
+                response += $"Cáncer: {MapZodiacSigns["Cáncer"]}";
             }
             else if (mes.Equals("Julio") && (dia >= 23 && dia <= 31))
             {
-                response = "Tu signo es Leo";
+                response += $"Leo: {MapZodiacSigns["Leo"]}";
             }
             else if (mes.Equals("Agosto") && (dia >= 1 && dia <= 22))
             {
-                response = "Tu signo es Leo";
+                response += $"Leo: {MapZodiacSigns["Leo"]}";
             }
             else if (mes.Equals("Agosto") && (dia >= 23 && dia <= 31))
             {
-                response = "Tu signo es Virgo";
+                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
             }
             else if (mes.Equals("Septiembre") && (dia >= 1 && dia <= 22))
             {
-                response = "Tu signo es Virgo";
+                response += $"Virgo: {MapZodiacSigns["Virgo"]}";
             }
             else if (mes.Equals("Septiembre") && (dia >= 23 && dia <= 30))
             {
-                response = "Tu signo es Libra";
+                response += $"Libra: {MapZodiacSigns["Libra"]}";
             }
             else if (mes.Equals("Octubre") && (dia >= 1 && dia <= 22))
             {
-                response = "Tu signo es Libra";
+                response += $"Libra: {MapZodiacSigns["Libra"]}";
             }
             else if (mes.Equals("Octubre") && (dia >= 23 && dia <= 31))
             {
-                response = "Tu signo es Escorpio";
+                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
             }
             else if (mes.Equals("Noviembre") && (dia >= 1 && dia <= 21))
             {
-                response = "Tu signo es Escorpio";
+                response += $"Escorpio: {MapZodiacSigns["Escorpio"]}";
             }
             else if (mes.Equals("Noviembre") && (dia >= 22 && dia <= 30))
             {
-                response = "Tu signo es Sagitario";
+                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
             }
             else if (mes.Equals("Diciembre") && (dia >= 1 && dia <= 21))
             {
-                response = "Tu signo es Sagitario";
+                response += $"Sagitario: {MapZodiacSigns["Sagitario"]}";
             }
             else if (mes.Equals("Diciembre") && (dia >= 22 && dia <= 31))
             {
-                response = "Tu signo es Capricornio";
+                response += $"Capricornio: {MapZodiacSigns["Capricornio"]}";
             }
 
             txtSalida.Visible = true;
@@ -243,22 +240,21 @@ namespace MHSignoZodiacal
 
         #region Propiedades
         Dictionary<string, int> MapMonthDays;
-        Dictionary<string, string[]> MapMonthZodiacSigns;
 
-        Dictionary<string, string[]> MapZodiacSigns = new Dictionary<string, string[]>()
+        Dictionary<string, string> MapZodiacSigns = new Dictionary<string, string>()
         {
-            { "Enero", new string[] { "Capricornio", "Acuario" } },
-            { "Febrero", new string[] { "Acuario", "Piscis" } },
-            { "Marzo", new string[] { "Piscis", "Aries" } },
-            { "Abril", new string[] { "Aries", "Tauro" } },
-            { "Mayo", new string[] { "Tauro", "Géminis" } },
-            { "Junio", new string[] { "Géminis", "Cáncer" } },
-            { "Julio", new string[] { "Cáncer", "Leo" } },
-            { "Agosto", new string[] { "Leo", "Virgo" } },
-            { "Septiembre", new string[] { "Virgo", "Libra" } },
-            { "Octubre", new string[] { "Libra", "Escorpio" } },
-            { "Noviembre", new string[] { "Escorpio", "Sagitario" } },
-            { "Diciembre", new string[] { "Sagitario", "Capricornio" } }
+            { "Capricornio", " un signo de tierra regido por Saturno, se caracteriza por su disciplina, ambición y responsabilidad." },
+            { "Acuario", " un signo de aire y se caracteriza por su naturaleza independiente, intelectual y humanitaria." },
+            { "Piscis", " un signo de agua y el último del zodiaco, se caracteriza por su profunda sensibilidad, empatía y creatividad." },
+            { "Aries", " el primer signo del zodiaco, un signo de fuego, se caracteriza por ser enérgico, apasionado y líder." },
+            { "Tauro", " se caracteriza por su naturaleza terrestre, lo que le otorga cualidades de estabilidad, persistencia y un enfoque práctico en la vida." },
+            { "Géminis", " un signo de aire y regido por Mercurio, se caracterizan por su naturaleza dual, comunicativa, curiosa y adaptable." },
+            { "Cáncer", " un signo de agua, lo que le otorga una naturaleza emocional, intuitiva y sensible." },
+            { "Leo", " un signo de fuego, regidos por el Sol, son conocidos por su naturaleza cálida, extrovertida y generosa." },
+            { "Virgo", " un signo de tierra y mutable, caracterizado por su naturaleza analítica, metódica y práctica." },
+            { "Libra", " un signo de aire, lo que significa que sus características incluyen inteligencia, capacidad de comunicación, adaptabilidad y un fuerte sentido de la justicia y la armonía." },
+            { "Escorpio", " un signo zodiacal de agua, conocido por su intensidad emocional, pasión y profundidad." },
+            { "Sagitario", " un signo zodiacal de fuego, representado por un centauro con flecha, que simboliza la búsqueda de la verdad y la libertad." }
         };
         #endregion
     }
