@@ -9,17 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using MHSignoZodiacal.Models;
+using MHSignoZodiacal.Controllers;
 
-namespace MHSignoZodiacal
+namespace MHSignoZodiacal.Views
 {
-    public partial class Form1 : Form
+    public partial class SignoZodiacalView : Form
     {
-        public Form1()
+        public SignoZodiacalView()
         {
             MapMonthDays = new Dictionary<string, int>();
 
             InitializeComponent();
+
+            SignoZodiacalController.FormSignoZodiacal = this;
 
             Reset();
             SetMeses();
@@ -97,8 +99,9 @@ namespace MHSignoZodiacal
                 int dia = Int32.Parse(this.comboDia.Text);
 
                 txtSalida.Visible = true;
-                // txtSalida.Text = SignoZodiacalCondicional.GetDescripcionSigno(mes, dia);
-                txtSalida.Text = (new SignoZodiacal()).GetDescripcionSigno(mes, dia);
+
+                // MVC Completo
+                SignoZodiacalController.SetDescripcionSigno(mes, dia);
             }
             else
             {
@@ -129,15 +132,14 @@ namespace MHSignoZodiacal
         private void comboDia_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSalida.Text = String.Empty;
+            bool isDay = (this.comboDia.SelectedIndex != 0);
 
-            if(btnConsultar.Enabled)
+            if (btnConsultar.Enabled && isDay)
             {
                 PrintOutput();
             }
             else
             {
-                bool isDay = (this.comboDia.SelectedIndex != 0);
-
                 btnConsultar.Enabled = isDay;
                 btnResetear.Enabled = isDay;
             }

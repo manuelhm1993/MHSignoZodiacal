@@ -1,6 +1,6 @@
-﻿namespace MHSignoZodiacal
+﻿namespace MHSignoZodiacal.Views
 {
-    partial class Form1
+    partial class SignoZodiacalView
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignoZodiacalView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -160,6 +160,14 @@
 
         }
 
+        public System.Windows.Forms.TextBox _txtSalida
+        {
+            get => txtSalida;
+            set
+            {
+                _txtSalida = txtSalida;
+            }
+        }
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
@@ -168,8 +176,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.TextBox txtSalida;
         private System.Windows.Forms.Button btnResetear;
+        private System.Windows.Forms.TextBox txtSalida;
     }
 }
 
