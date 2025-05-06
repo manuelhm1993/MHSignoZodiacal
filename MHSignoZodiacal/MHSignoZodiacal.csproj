@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\SignoZodiacalController.cs" />
+    <Compile Include="Utilitarios\Common.cs" />
     <Compile Include="Views\SignoZodiacalView.cs">
       <SubType>Form</SubType>
     </Compile>
